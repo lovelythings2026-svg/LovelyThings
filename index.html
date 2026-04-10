@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lovely Things | használtruha butik Százhalombattán</title>
+  <meta name="description" content="Lovely Things használtruha butik Százhalombattán. Egyedi női ruhák, különleges darabok, szeretettel válogatva. Kövess minket Instagramon, TikTokon és Facebookon." />
+  <style>
+    :root {
+      --bg: #f8f1ec;
+      --bg-soft: #f3e3dc;
+      --text: #5b3b33;
+      --text-soft: #6e514a;
+      --muted: #7a5f58;
+      --pink: #c97f9a;
+      --pink-dark: #b86c89;
+      --gold: #e6c9a8;
+      --gold-soft: #f3dfc6;
+      --brown: #6b3e2e;
+      --brown-mid: #8b5a4a;
+      --brown-light: #a47148;
+      --white: rgba(255,255,255,0.95);
+      --shadow-soft: 0 10px 30px rgba(201,127,154,0.08);
+      --shadow-strong: 0 16px 40px rgba(201,127,154,0.18);
+      --radius: 2rem;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(244,194,209,0.35), transparent 18%),
+        radial-gradient(circle at 85% 12%, rgba(244,194,209,0.22), transparent 16%),
+        radial-gradient(circle at 78% 72%, rgba(244,194,209,0.18), transparent 20%);
+      z-index: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1200px, calc(100% - 48px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-wrap {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(to bottom, var(--bg-soft), var(--bg), var(--bg));
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 40px;
+      align-items: center;
+      padding: 72px 0 88px;
+    }
+
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      margin: 0;
+      line-height: 0.95;
+      font-size: clamp(52px, 8vw, 112px);
+      position: relative;
+    }
+
+    .lovely {
+      position: relative;
+      color: var(--pink);
+      font-family: Georgia, serif;
+      font-style: italic;
+      text-shadow: 0 0 10px rgba(201,127,154,0.15);
+      display: inline-block;
+    }
+
+    .lovely .l-large {
+      font-size: 1.5em;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .sparkle-1,
+    .sparkle-2 {
+      position: absolute;
+      color: var(--gold);
+      pointer-events: none;
+    }
+
+    .sparkle-1 {
+      top: -0.22em;
+      left: 0.04em;
+      font-size: 0.42em;
+      opacity: 0.9;
+      animation: twinkle 3.2s ease-in-out infinite;
+    }
+
+    .sparkle-2 {
+      top: -0.04em;
+      left: 0.34em;
+      font-size: 0.22em;
+      opacity: 0.6;
+      animation: twinkle-delay 4.2s ease-in-out infinite 1.6s;
+    }
+
+    .things {
+      font-family: Georgia, serif;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      background: linear-gradient(90deg, var(--brown) 0%, var(--brown-mid) 20%, var(--brown-light) 45%, var(--gold) 75%, var(--gold-soft) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+
+    .tagline {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--pink);
+      opacity: 0.92;
+      font-family: "Brush Script MT", "Segoe Script", cursive;
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+    }
+
+    .tagline-star { color: var(--gold); }
+
+    .tagline-line {
+      margin-top: 8px;
+      height: 2px;
+      width: 128px;
+      border-radius: 999px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+
+    .lead,
+    .body-copy {
+      max-width: 720px;
+    }
+
+    .lead {
+      margin: 24px 0 0;
+      font-size: 1.25rem;
+      line-height: 1.7;
+      color: var(--text-soft);
+    }
+
+    .body-copy {
+      margin: 16px 0 0;
+      font-size: 1.06rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .body-copy.strong { font-weight: 600; }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      padding: 14px 24px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 10px 26px rgba(91,59,51,0.08);
+    }
+
+    .btn:hover { transform: translateY(-1px) scale(1.02); }
+
+    .btn-primary {
+      background: var(--pink);
+      color: white;
+    }
+
+    .btn-primary:hover { background: var(--pink-dark); }
+
+    .btn-secondary {
+      background: rgba(255,248,251,0.92);
+      color: #7b5560;
+      border: 1px solid #e7bfd0;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 540px;
+    }
+
+    .hero-visual::before,
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(60px);
+      pointer-events: none;
+    }
+
+    .hero-visual::before {
+      width: 190px;
+      height: 190px;
+      right: -20px;
+      top: 28px;
+      background: #ebcfc8;
+    }
+
+    .hero-visual::after {
+      width: 160px;
+      height: 160px;
+      left: -12px;
+      bottom: 18px;
+      background: #f2ddd7;
+    }
+
+    .hero-card {
+      position: relative;
+      width: min(100%, 460px);
+      background: white;
+      padding: 14px;
+      border-radius: var(--radius);
+      box-shadow: 0 24px 60px rgba(91,59,51,0.12);
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      border-radius: 1.5rem;
+      display: block;
+    }
+
+    .section {
+      position: relative;
+      padding: 56px 0;
+    }
+
+    .section-decor-top,
+    .section-decor-bottom {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 160px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      pointer-events: none;
+    }
+
+    .section-decor-top { top: 0; }
+    .section-decor-bottom { bottom: 0; }
+
+    .section-glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.22;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(244,194,209,0.25), transparent 35%),
+        radial-gradient(circle at 80% 70%, rgba(230,201,168,0.18), transparent 40%);
+    }
+
+    .cards,
+    .gallery-grid,
+    .social-grid {
+      position: relative;
+      display: grid;
+      gap: 24px;
+    }
+
+    .cards { grid-template-columns: repeat(3, 1fr); }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    .social-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .card {
+      position: relative;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(6px);
+      border-radius: 32px;
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.24s ease, box-shadow 0.24s ease, background 0.24s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .card h2,
+    .card h3 {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mini-star { color: var(--gold); }
+
+    .mini-line {
+      margin-top: 10px;
+      width: 64px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+
+    .card p {
+      margin: 14px 0 0;
+      color: var(--text-soft);
+      line-height: 1.75;
+      font-size: 1.05rem;
+    }
+
+    .section-label {
+      margin: 0;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: #a67c74;
+    }
+
+    .section-title-row {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      margin: 10px 0 0;
+      font-size: clamp(38px, 5vw, 60px);
+      line-height: 1.05;
+    }
+
+    .section-note {
+      max-width: 420px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      text-align: right;
+    }
+
+    .gallery-card {
+      overflow: hidden;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(6px);
+      border-radius: 32px;
+      box-shadow: 0 10px 30px rgba(91,59,51,0.08);
+      transition: transform 0.24s ease, box-shadow 0.24s ease;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.02);
+    }
+
+    .gallery-card .caption {
+      padding: 20px;
+      font-size: 1.06rem;
+      font-weight: 600;
+    }
+
+    .social-panel {
+      border-radius: 32px;
+      padding: 40px;
+      color: white;
+      background: linear-gradient(135deg, #6a4740 0%, #8f6170 45%, #c97f9a 100%);
+    }
+
+    .social-panel .section-label {
+      color: #e7cfc7;
+    }
+
+    .social-panel p {
+      max-width: 760px;
+      color: #f3e8e3;
+      line-height: 1.8;
+    }
+
+    .social-link {
+      display: block;
+      background: rgba(255,255,255,0.10);
+      border-radius: 28px;
+      padding: 20px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .social-link:hover {
+      background: rgba(255,255,255,0.20);
+      transform: translateY(-2px);
+    }
+
+    .social-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .hover-sparkle {
+      position: relative;
+      display: inline-block;
+      color: #f3d9c4;
+    }
+
+    .hover-sparkle .front {
+      position: relative;
+      z-index: 1;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      display: inline-block;
+    }
+
+    .hover-sparkle .trail {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      filter: blur(2px);
+      color: #f3d9c4;
+      pointer-events: none;
+    }
+
+    .social-link:hover .hover-sparkle .front {
+      animation: sparkle-hover 0.8s ease;
+    }
+
+    .social-link:hover .hover-sparkle .trail {
+      opacity: 1;
+      animation: sparkle-trail 0.8s ease;
+    }
+
+    .handle {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: #f0ddd7;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: 32px;
+      padding: 26px;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+      transition: box-shadow 0.24s ease;
+    }
+
+    .info-card:hover { box-shadow: 0 16px 40px rgba(201,127,154,0.15); }
+
+    .info-card h2 {
+      margin: 0;
+      font-size: 1.9rem;
+    }
+
+    .info-card p,
+    .info-card div {
+      color: var(--text-soft);
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    .info-divider {
+      margin: 24px auto;
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+
+    .route-btn {
+      margin-top: 16px;
+      display: inline-flex;
+      padding: 12px 20px;
+      border-radius: 18px;
+      color: white;
+      background: linear-gradient(to right, #5b3b33, #8b5a4a);
+      box-shadow: 0 8px 20px rgba(91,59,51,0.12);
+      transition: transform 0.2s ease;
+      font-weight: 600;
+    }
+
+    .route-btn:hover { transform: scale(1.03); }
+
+    footer {
+      padding: 8px 24px 40px;
+      text-align: center;
+      color: #8a6a62;
+      font-size: 0.95rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer .city { margin-top: 8px; }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.15; transform: scale(0.85) rotate(0deg); }
+      50% { opacity: 0.95; transform: scale(1.15) rotate(10deg); }
+    }
+
+    @keyframes twinkle-delay {
+      0%, 100% { opacity: 0.15; transform: scale(0.85) rotate(0deg); }
+      50% { opacity: 0.95; transform: scale(1.12) rotate(-8deg); }
+    }
+
+    @keyframes sparkle-hover {
+      0% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+      50% { transform: scale(1.4) rotate(15deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+    }
+
+    @keyframes sparkle-trail {
+      0% { transform: translateX(0); opacity: 0; }
+      30% { opacity: 1; }
+      100% { transform: translateX(12px); opacity: 0; }
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 56px;
+      }
+      .hero-visual {
+        min-height: auto;
+      }
+      .cards,
+      .gallery-grid,
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+      .section-title-row {
+        align-items: start;
+      }
+      .section-note {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, 1200px);
+      }
+      .hero-card img {
+        height: 420px;
+      }
+      .social-panel {
+        padding: 28px 22px;
+      }
+      .lead { font-size: 1.08rem; }
+      .body-copy { font-size: 1rem; }
+      .brand-title { line-height: 1; }
+      .tagline { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero-wrap">
+    <div class="container hero">
+      <div>
+        <div class="brand-block">
+          <h1 class="brand-title">
+            <span class="lovely"><span class="l-large">L</span><span class="sparkle-1">✧</span><span class="sparkle-2">✧</span>ovely</span><br />
+            <span class="things">Things</span>
+          </h1>
+          <div class="tagline">
+            <span class="tagline-star">✦</span>
+            <span>szeretettel válogatva</span>
+            <span class="tagline-star">✦</span>
+          </div>
+          <div class="tagline-line"></div>
+        </div>
+
+        <p class="lead">
+          Minden egyetlen gondolattal kezdődött: mi lenne, ha létezne egy hely, ahol a különleges darabok új életet kapnak?
+        </p>
+        <p class="body-copy">
+          Egy kis butik, ahol a ruhák nem csak ruhák… hanem kincsek. Olyan darabok, amelyekre valaki egyszer rátalál, és úgy érzi: mintha csak rá várt volna.
+        </p>
+        <p class="body-copy">
+          Ha szereted az egyedi darabokat, a különleges textúrákat és azokat a ruhákat, amelyekbe első pillantásra bele lehet szeretni, akkor jó helyen jársz.
+        </p>
+        <p class="body-copy strong">Így született meg a Lovely Things.</p>
+        <p class="body-copy">Stílusvadászoknak. A különleges darabok szerelmeseinek.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#social">Kövess minket</a>
+          <a class="btn btn-secondary" href="#galeria">Nézd meg a hangulatot</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card">
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=80" alt="Lovely Things használtruha butik Százhalombattán" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-decor-top"></div>
+    <div class="section-decor-bottom"></div>
+    <div class="section-glow"></div>
+    <div class="container cards">
+      <article class="card">
+        <h2><span class="mini-star">✧</span> Kik vagyunk?</h2>
+        <div class="mini-line"></div>
+        <p>Egy szeretettel épített használtruha butik Százhalombattán, ahol a válogatás nem futószalagon, hanem szívvel történik.</p>
+      </article>
+      <article class="card">
+        <h2><span class="mini-star">✧</span> Mit találsz nálunk?</h2>
+        <div class="mini-line"></div>
+        <p>Egyedi darabokat, különleges női ruhákat, textúrákat, nőies és vagány kincseket, amik kiemelnek a tömegből.</p>
+      </article>
+      <article class="card">
+        <h2><span class="mini-star">✧</span> Miért Lovely Things?</h2>
+        <div class="mini-line"></div>
+        <p>Mert itt nem csak ruhát keresel, hanem egyedi stílust és különleges darabokat, amire ránézel, és azt mondod: na igen, ez én vagyok.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="galeria">
+    <div class="section-decor-top"></div>
+    <div class="section-decor-bottom"></div>
+    <div class="section-glow" style="opacity:0.18;"></div>
+    <div class="container">
+      <div class="section-title-row">
+        <div>
+          <p class="section-label">Galéria</p>
+          <h2 class="section-title">Egy kis ízelítő</h2>
+        </div>
+        <p class="section-note">Néhány hangulatkép a Lovely Things világából.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <article class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80" alt="Különleges használtruha darabok, szeretettel válogatva" />
+          <div class="caption">Különleges használtruha darabok, szeretettel válogatva</div>
+        </article>
+        <article class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=80" alt="Színes, egyedi női ruhák és különleges stílus" />
+          <div class="caption">Színes, egyedi női ruhák és különleges stílus</div>
+        </article>
+        <article class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80" alt="Lovely Things butik belső tér és hangulat Százhalombattán" />
+          <div class="caption">Lovely Things butik belső tér és hangulat Százhalombattán</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="social">
+    <div class="container">
+      <div class="social-panel">
+        <p class="section-label">Social</p>
+        <h2 style="margin: 10px 0 0; display:flex; align-items:center; gap:10px; font-size:2rem;">
+          <span class="mini-star">✧</span>
+          Találkozzunk online is
+        </h2>
+        <p>Kövess minket Instagramon, TikTokon és Facebookon, ahol folyamatosan mutatjuk az új érkezéseket, különleges darabokat és a butik világát.</p>
+
+        <div class="social-grid">
+          <a class="social-link" href="https://instagram.com/lovelythings.hu" target="_blank" rel="noreferrer">
+            <div class="social-name">
+              <span class="hover-sparkle"><span class="front">✧</span><span class="trail">✧</span></span>
+              Instagram
+            </div>
+            <div class="handle">@lovelythings.hu</div>
+          </a>
+          <a class="social-link" href="https://www.tiktok.com/@lovelythings.hu" target="_blank" rel="noreferrer">
+            <div class="social-name">
+              <span class="hover-sparkle"><span class="front">✧</span><span class="trail">✧</span></span>
+              TikTok
+            </div>
+            <div class="handle">@lovelythings.hu</div>
+          </a>
+          <a class="social-link" href="https://www.facebook.com/LovelyThings.butik" target="_blank" rel="noreferrer">
+            <div class="social-name">
+              <span class="hover-sparkle"><span class="front">✧</span><span class="trail">✧</span></span>
+              Facebook
+            </div>
+            <div class="handle">LovelyThings.butik</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="info-card">
+        <h2>Hol találsz minket? <span class="mini-star">✧</span></h2>
+        <p>2440 Százhalombatta, Jedlik Ányos utca 15.</p>
+        <a class="route-btn" href="https://www.google.com/maps/search/?api=1&query=2440+Sz%C3%A1zhalombatta,+Jedlik+%C3%81nyos+utca+15" target="_blank" rel="noreferrer">Útvonal ide</a>
+      </div>
+
+      <div class="info-divider"></div>
+
+      <div class="info-card">
+        <h2>Nyitvatartás <span class="mini-star">✧</span></h2>
+        <div>Hétfő – Péntek: <strong>10:00 – 18:00</strong></div>
+        <div>Szombat: <strong>09:00 – 14:00</strong></div>
+        <div>Vasárnap: <strong>Zárva</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>© <span id="year"></span> Lovely Things • szeretettel válogatva</div>
+    <div class="city">Százhalombatta</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
