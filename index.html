@@ -145,24 +145,26 @@
   padding-bottom: 0.12em;
 }
 
-    .tagline {
-  margin-top: 8px;
+  .tagline {
+  margin-top: 12px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+
   font-family: 'Allura', cursive;
-  font-size: 1.6rem;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
   line-height: 1;
+
   color: #b86c89;
-  text-shadow: 0 1px 2px rgba(184,108,137,0.25);
-  opacity: 0.95;
+  opacity: 1;
+
+  letter-spacing: 0.02em;
 }
 
-    .tagline-star {
+.tagline-star {
   color: #e6c9a8;
   font-size: 0.9em;
 }
-
     .lead,
     .body-copy {
       max-width: 720px;
