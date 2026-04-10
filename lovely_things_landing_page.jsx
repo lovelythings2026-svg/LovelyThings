@@ -61,25 +61,17 @@ export default function LovelyThingsLandingPage() {
         }
 
         @keyframes sparkleTrail {
-  0% {
-    transform: translateX(0);
-    opacity: 0;
-  }
-  30% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(12px);
-    opacity: 0;
-  }
-}
-          50% { box-shadow: 0 0 12px rgba(243,217,196,0.9), 0 0 24px rgba(243,217,196,0.6); }
-          100% { box-shadow: 0 0 0px rgba(243,217,196,0); }
-        }
-          50% { transform: scale(1.4) rotate(15deg); opacity: 1; }
-          100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
-        }
-          50% { opacity: 0.95; transform: scale(1.12) rotate(-8deg); }
+          0% {
+            transform: translateX(0);
+            opacity: 0;
+          }
+          30% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(12px);
+            opacity: 0;
+          }
         }
       `}</style>
     <div className="min-h-screen bg-[#f8f1ec] text-[#5b3b33]">
