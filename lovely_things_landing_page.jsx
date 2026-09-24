@@ -347,7 +347,7 @@ export default function LovelyThingsLandingPage() {
               Hétfő – Péntek: <strong>10:00 – 18:00</strong>
             </div>
             <div>
-              Szombat: <strong>09:00 – 14:00</strong>
+              Szombat: <strong>09:00 – 12:00</strong>
             </div>
             <div>
               Vasárnap: <strong>Zárva</strong>
